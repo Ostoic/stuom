@@ -14,7 +14,9 @@ readme = "README.md"
 requires-python = ">=3.11"
 
 [project.optional-dependencies]
-dev = ["pytest", "pytest-cov", "pytest-asyncio", "black", "ruff"]
+dev = ["pytest", "pytest-cov", "black", "ruff"]
+lint = ["black", "ruff"]
+test = ["pytest", "pytest-cov"]
 
 [tool.pylint]
 max-line-length = 100

@@ -49,7 +49,6 @@ jobs:
         run: pip install .'[test]'
 
       - name: Run tests
-        run: pytest
         run: pytest -s -vvvv -l --tb=long tests
 
       - name: "Upload coverage to Codecov"

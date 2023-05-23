@@ -1,3 +1,4 @@
+"""Statically-typed units of measurement."""
 from . import parse, uom
 from .uom import (
     Angstroms,

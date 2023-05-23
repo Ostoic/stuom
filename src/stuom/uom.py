@@ -104,6 +104,8 @@ class HundredNanoseconds(Duration):
 
 
 class Nanoseconds(Duration):
+    """ns."""
+
     def __str__(self) -> str:
         return super().__str__() + "ns"
 

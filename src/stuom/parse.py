@@ -1,3 +1,4 @@
+"""Functions for parsing `Duration`s from strings."""
 from stuom.uom import (
     Duration,
     Hours,

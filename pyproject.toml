@@ -7,14 +7,13 @@ name = "stuom"
 version = "0.1.0"
 authors = [{ name = "Shaun Ostoic", email = "ostoic@proton.me" }]
 
-dependencies = [ ]
+dependencies = []
 
 description = "Simple statically-typed unit of measurements with order conversions."
 readme = "README.md"
 requires-python = ">=3.11"
 
 [project.optional-dependencies]
-dev = ["pytest", "pytest-cov", "black", "ruff"]
 lint = ["black", "ruff"]
 test = ["pytest", "pytest-cov"]
 

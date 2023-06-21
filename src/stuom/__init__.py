@@ -12,6 +12,7 @@ from .duration import (
 )
 from .electricity import (
     Current,
+    Deciwatts,
     ElectricPotential,
     Kilovolts,
     Microamps,

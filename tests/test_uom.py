@@ -3,9 +3,12 @@ import math
 
 from stuom import (
     Angstroms,
+    Deciwatts,
     Hours,
     HundredNanoseconds,
+    Kilovolts,
     Meters,
+    Microamps,
     Microseconds,
     Milimeters,
     Milliseconds,
@@ -14,6 +17,7 @@ from stuom import (
     ReciprocalCentimeters,
     ReciprocalMeters,
     Seconds,
+    Watts,
 )
 
 
@@ -48,5 +52,8 @@ def test_length_uom():
     assert math.isclose(ReciprocalMeters(10e-2).to_meters(), Meters(1 / 10e-2))
 
 
-# def test_electricity_uom():
-#     pass
+def test_electricity_uom():
+    power = Watts.from_current_and_potential(Microamps(225), Kilovolts(20))
+    assert power == Watts(4.5)
+    assert Deciwatts.from_si(power) == 45
+

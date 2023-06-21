@@ -1,3 +1,4 @@
+"""Units of measurement for working with lengths."""
 from typing import Self, TypeVar
 
 from stuom.uom import HasSiOrder

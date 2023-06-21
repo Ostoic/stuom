@@ -1,3 +1,4 @@
+"""Units of measurement for working with durations."""
 import math
 from typing import TypeVar
 

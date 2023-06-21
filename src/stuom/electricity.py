@@ -1,3 +1,4 @@
+"""Contains units of measurement for working with electricity units such as power."""
 from stuom.uom import HasSiOrder
 
 
@@ -6,6 +7,7 @@ class ElectricPotential(HasSiOrder):
 
 
 class Kilovolts(ElectricPotential):
+    """kV."""
     def __str__(self) -> str:
         return super().__str__() + "kV"
 
@@ -15,6 +17,7 @@ class Kilovolts(ElectricPotential):
 
 
 class Volts(ElectricPotential):
+    """V."""
     def __str__(self) -> str:
         return super().__str__() + "V"
 
@@ -24,6 +27,7 @@ class Volts(ElectricPotential):
 
 
 class Millivolts(ElectricPotential):
+    """mV."""
     def __str__(self) -> str:
         return super().__str__() + "mV"
 
@@ -33,10 +37,12 @@ class Millivolts(ElectricPotential):
 
 
 class Power(HasSiOrder):
+    """The amount of energy transferred per unit time."""
     pass
 
 
 class Watts(Power):
+    """W."""
     def __str__(self) -> str:
         return super().__str__() + "W"
 
@@ -50,6 +56,7 @@ class Watts(Power):
 
 
 class Deciwatts(Power):
+    """dW."""
     def __str__(self) -> str:
         return super().__str__() + "dW"
 
@@ -59,6 +66,7 @@ class Deciwatts(Power):
 
 
 class Milliwatts(Power):
+    """mW."""
     def __str__(self) -> str:
         return super().__str__() + "mW"
 
@@ -72,6 +80,7 @@ class Current(HasSiOrder):
 
 
 class Amps(Current):
+    """A."""
     def __str__(self) -> str:
         return super().__str__() + "A"
 
@@ -81,6 +90,7 @@ class Amps(Current):
 
 
 class Milliamps(Current):
+    """mA."""
     def __str__(self) -> str:
         return super().__str__() + "mA"
 
@@ -90,6 +100,7 @@ class Milliamps(Current):
 
 
 class Microamps(Current):
+    """uA."""
     def __str__(self) -> str:
         return super().__str__() + "uA"
 

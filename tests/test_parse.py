@@ -1,8 +1,7 @@
 """Test unit of measurement parsing."""
 
 import pytest
-from stuom.parse import find_minimal_si, parse_duration, parse_minimal_si
-from stuom.uom import (
+from stuom.duration import (
     Hours,
     HundredNanoseconds,
     Microseconds,
@@ -11,6 +10,7 @@ from stuom.uom import (
     Nanoseconds,
     Seconds,
 )
+from stuom.parse import find_minimal_si, parse_duration, parse_minimal_si
 
 
 def test_parse_minimal_si():

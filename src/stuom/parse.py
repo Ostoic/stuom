@@ -1,5 +1,7 @@
 """Functions for parsing `Duration`s from strings."""
-from stuom.uom import (
+
+
+from stuom.duration import (
     Duration,
     Hours,
     HundredNanoseconds,

@@ -1,7 +1,7 @@
 """Test unit of measurement types."""
 import math
 
-from stuom.uom import (
+from stuom import (
     Angstroms,
     Hours,
     HundredNanoseconds,
@@ -28,7 +28,7 @@ def test_duration_uom():
     assert math.isclose(HundredNanoseconds.from_duration(Minutes(10)), 10 * 60 * 1000 * 1000 * 10)
 
 
-def test_units():
+def test_length_uom():
     assert math.isclose(Meters(0.005), Milimeters(5).convert_length(Meters))
     assert math.isclose(Meters(1), Meters.from_length(Milimeters(1000)))
     assert math.isclose(Meters(2), Meters.from_length(Angstroms.from_length(Meters(2))))
@@ -46,3 +46,7 @@ def test_units():
     )
 
     assert math.isclose(ReciprocalMeters(10e-2).to_meters(), Meters(1 / 10e-2))
+
+
+# def test_electricity_uom():
+#     pass

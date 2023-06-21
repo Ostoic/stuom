@@ -1,25 +1,36 @@
 """Statically-typed units of measurement."""
-from . import parse, uom
-from .uom import (
-    Angstroms,
-    Centimeters,
+from . import duration, electricity, length, parse, uom
+from .duration import (
     Duration,
-    HasSiOrder,
     Hours,
     HundredNanoseconds,
-    Length,
-    Meters,
-    Micrometers,
     Microseconds,
-    Milimeters,
     Milliseconds,
     Minutes,
-    Nanometers,
     Nanoseconds,
+    Seconds,
+)
+from .electricity import (
+    Current,
+    ElectricPotential,
+    Kilovolts,
+    Microamps,
+    Milliamps,
+    Millivolts,
+    Power,
+    Volts,
+    Watts,
+)
+from .length import (
+    Angstroms,
+    Centimeters,
+    Meters,
+    Micrometers,
+    Milimeters,
+    Nanometers,
     ReciprocalCentimeters,
     ReciprocalLength,
     ReciprocalMeters,
     ReciprocalMicrometers,
     ReciprocalMilimeters,
-    Seconds,
 )

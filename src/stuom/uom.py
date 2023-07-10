@@ -23,23 +23,23 @@ class HasSiOrder(float):
     def from_si(cls: type[SiT], other: "HasSiOrder") -> SiT:
         return other.convert_si(cls)
 
-    def __mul__(self, value: IntT):
+    def __mul__(self: SiT, value: IntT) -> SiT:
         self_type = type(self)
         return self_type(float.__mul__(self, value))
 
-    def __add__(self, value: IntT):
+    def __add__(self: SiT, value: IntT) -> SiT:
         self_type = type(self)
         return self_type(float.__add__(self, value))
 
-    def __sub__(self, value: IntT):
+    def __sub__(self: SiT, value: IntT) -> SiT:
         self_type = type(self)
         return self_type(float.__sub__(self, value))
 
-    def __truediv__(self, value: IntT):
+    def __truediv__(self: SiT, value: IntT) -> SiT:
         self_type = type(self)
         return self_type(float.__truediv__(self, value))
 
-    def __floordiv__(self, value: IntT):
+    def __floordiv__(self: SiT, value: IntT) -> SiT:
         self_type = type(self)
         return self_type(float.__floordiv__(self, value))
 

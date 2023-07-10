@@ -21,6 +21,28 @@ from stuom import (
 )
 
 
+def test_uom_operators():
+    mins_sum = Minutes(2) + 4
+    assert isinstance(mins_sum, Minutes)
+    assert mins_sum == Minutes(6)
+
+    mins_prod = Minutes(2) * 4
+    assert isinstance(mins_prod, Minutes)
+    assert mins_prod == Minutes(8)
+
+    mins_truediv = Minutes(4) / 2
+    assert isinstance(mins_truediv, Minutes)
+    assert mins_truediv == Minutes(2)
+
+    mins_floordiv = Minutes(4.5) // 2
+    assert isinstance(mins_floordiv, Minutes)
+    assert mins_floordiv == Minutes(2)
+
+    mins_sub = Minutes(9) - 2
+    assert isinstance(mins_sub, Minutes)
+    assert mins_sub == Minutes(7)
+
+
 def test_duration_uom():
     assert math.isclose(Minutes.from_duration(Hours(2)), Minutes(60 * 2))
     assert math.isclose(Hours(2).convert_duration(Minutes), Minutes(60 * 2))

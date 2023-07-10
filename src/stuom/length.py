@@ -1,5 +1,5 @@
 """Units of measurement for working with lengths."""
-from typing import Self, TypeVar
+from typing import TypeVar
 
 from stuom.uom import HasSiOrder
 
@@ -13,7 +13,7 @@ class Length(HasSiOrder):
         return self.convert_si(to_cls)
 
     @classmethod
-    def from_length(cls, other: "Length") -> Self:
+    def from_length(cls: type[LengthT], other: "Length") -> LengthT:
         return other.convert_length(cls)
 
 

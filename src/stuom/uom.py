@@ -1,7 +1,7 @@
 """Simple statically-typed unit of measurements with order conversions."""
 
 from abc import abstractmethod
-from typing import Self, TypeVar
+from typing import TypeVar
 
 SiT = TypeVar("SiT", bound="HasSiOrder")
 
@@ -19,7 +19,7 @@ class HasSiOrder(float):
         return _convert_si(self, to_cls)
 
     @classmethod
-    def from_si(cls, other: "HasSiOrder") -> Self:
+    def from_si(cls: type[SiT], other: "HasSiOrder") -> SiT:
         return other.convert_si(cls)
 
 

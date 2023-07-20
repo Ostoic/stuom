@@ -1,13 +1,22 @@
 repos:
-- repo: https://github.com/psf/black
-  rev: 22.12.0
-  hooks:
-  - id: black
+  - repo: https://github.com/psf/black
+    rev: 23.7.0
+    hooks:
+      - id: black
+        args:
+          - --safe
+          - --check
 
-- repo: local
-  hooks:
-    - id: run_tests
-      name: run-tests
-      entry: .\\run-tests.bat
-      stages: [commit]
-      language: script
+  - repo: local
+    hooks:
+      - id: run_tests
+        name: run-tests
+        entry: ..\\..\\..\\run-tests.bat
+        language: script
+        stages: [commit]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace

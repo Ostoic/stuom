@@ -19,6 +19,8 @@ from stuom import (
     Seconds,
     Watts,
 )
+from stuom.electricity import Amps, Volts
+from stuom.length import Centimeters, Micrometers
 
 
 def test_uom_operators():
@@ -84,3 +86,28 @@ def test_electricity_uom():
     power = Watts.from_current_and_potential(Microamps(225), Kilovolts(20))
     assert power == Watts(4.5)
     assert Deciwatts.from_si(power) == 45
+
+
+def test_uom_str_representations():
+    # Length
+    assert str(Micrometers(10)) == "10.0um"
+    assert str(Milimeters(10)) == "10.0mm"
+    assert str(Meters(10)) == "10.0m"
+    assert str(Centimeters(10)) == "10.0cm"
+
+    # Electricity
+    assert str(Microamps(10)) == "10.0uA"
+    assert str(Amps(10)) == "10.0A"
+
+    assert str(Watts(10)) == "10.0W"
+    assert str(Deciwatts(10)) == "10.0dW"
+
+    assert str(Volts(10)) == "10.0V"
+    assert str(Kilovolts(10)) == "10.0kV"
+
+    # Duration
+    assert str(Nanoseconds(10)) == "10.0ns"
+    assert str(Microseconds(10)) == "10.0us"
+    assert str(Seconds(10)) == "10.0s"
+    assert str(Minutes(10)) == "10.0 mins"
+    assert str(Hours(10)) == "10.0 hrs"

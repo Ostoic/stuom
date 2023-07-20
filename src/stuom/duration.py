@@ -22,7 +22,7 @@ class Hours(Duration):
     """hrs."""
 
     def __str__(self) -> str:
-        return super().__str__() + "hrs"
+        return super().__str__() + " hrs"
 
     @staticmethod
     def order() -> float:
@@ -33,7 +33,7 @@ class Minutes(Duration):
     """mins."""
 
     def __str__(self) -> str:
-        return super().__str__() + "mins"
+        return super().__str__() + " mins"
 
     @staticmethod
     def order() -> float:

@@ -50,8 +50,12 @@ def test_duration_uom():
     assert math.isclose(Seconds.from_duration(Minutes(10)), 10 * 60)
     assert math.isclose(Milliseconds.from_duration(Minutes(10)), 10 * 60 * 1000)
     assert math.isclose(Microseconds.from_duration(Minutes(10)), 10 * 60 * 1000 * 1000)
-    assert math.isclose(Nanoseconds.from_duration(Minutes(10)), 10 * 60 * 1000 * 1000 * 1000)
-    assert math.isclose(HundredNanoseconds.from_duration(Minutes(10)), 10 * 60 * 1000 * 1000 * 10)
+    assert math.isclose(
+        Nanoseconds.from_duration(Minutes(10)), 10 * 60 * 1000 * 1000 * 1000
+    )
+    assert math.isclose(
+        HundredNanoseconds.from_duration(Minutes(10)), 10 * 60 * 1000 * 1000 * 10
+    )
 
 
 def test_length_uom():
@@ -62,7 +66,9 @@ def test_length_uom():
     assert math.isclose(Angstroms(2e10).convert_si(Meters), Meters(2))
 
     assert math.isclose(
-        ReciprocalMeters(10e-2).convert_si(ReciprocalCentimeters).convert_si(ReciprocalMeters),
+        ReciprocalMeters(10e-2)
+        .convert_si(ReciprocalCentimeters)
+        .convert_si(ReciprocalMeters),
         ReciprocalMeters(10e-2),
     )
 
@@ -78,4 +84,3 @@ def test_electricity_uom():
     power = Watts.from_current_and_potential(Microamps(225), Kilovolts(20))
     assert power == Watts(4.5)
     assert Deciwatts.from_si(power) == 45
-

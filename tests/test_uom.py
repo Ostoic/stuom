@@ -64,18 +64,18 @@ def test_length_uom():
     assert math.isclose(Meters(0.005), Milimeters(5).convert_length(Meters))
     assert math.isclose(Meters(1), Meters.from_length(Milimeters(1000)))
     assert math.isclose(Meters(2), Meters.from_length(Angstroms.from_length(Meters(2))))
-    assert math.isclose(Meters(2).convert_si(Angstroms), Angstroms(2e10))
-    assert math.isclose(Angstroms(2e10).convert_si(Meters), Meters(2))
+    assert math.isclose(Meters(2).convert_length(Angstroms), Angstroms(2e10))
+    assert math.isclose(Angstroms(2e10).convert_length(Meters), Meters(2))
 
     assert math.isclose(
         ReciprocalMeters(10e-2)
-        .convert_si(ReciprocalCentimeters)
-        .convert_si(ReciprocalMeters),
+        .convert_from_reciprocal_length(ReciprocalCentimeters)
+        .convert_from_reciprocal_length(ReciprocalMeters),
         ReciprocalMeters(10e-2),
     )
 
     assert math.isclose(
-        ReciprocalMeters(1).convert_si(ReciprocalCentimeters),
+        ReciprocalMeters(1).convert_from_reciprocal_length(ReciprocalCentimeters),
         ReciprocalCentimeters(100),
     )
 
@@ -85,7 +85,9 @@ def test_length_uom():
 def test_electricity_uom():
     power = Watts.from_current_and_potential(Microamps(225), Kilovolts(20))
     assert power == Watts(4.5)
-    assert Deciwatts.from_si(power) == 45
+    assert Deciwatts.from_power(power) == 45
+    assert Volts.from_potential(Kilovolts(20)) == Volts(20000)
+    assert Amps.from_current(Microamps(225)) == Amps(0.000225)
 
 
 def test_uom_str_representations():

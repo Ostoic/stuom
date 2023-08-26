@@ -80,11 +80,22 @@ class Angstroms(Length):
         return 10
 
 
+ReciprocalLengthT = TypeVar("ReciprocalLengthT", bound="ReciprocalLength")
+
+
 class ReciprocalLength(HasSiOrder):
     """1 / `Length`."""
 
-    # def reciprocate(self) -> HasSiOrder:
-    #     return Length()
+    def convert_from_reciprocal_length(
+        self, to_cls: type[ReciprocalLengthT]
+    ) -> ReciprocalLengthT:
+        return self.convert_si(to_cls)
+
+    @classmethod
+    def from_reciprocal_length(
+        cls: type[ReciprocalLengthT], other: "ReciprocalLength"
+    ) -> ReciprocalLengthT:
+        return other.convert_from_reciprocal_length(cls)
 
 
 class ReciprocalMeters(ReciprocalLength):

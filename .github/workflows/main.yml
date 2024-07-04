@@ -25,10 +25,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install project
-        run: pip install .'[lint]'
+        run: pip install .'[dev]'
 
       - name: Run linter
-        run: ruff src/stuom
+        run: ruff check src/stuom
 
   tests_linux:
     needs: linter
@@ -46,7 +46,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install project
-        run: pip install .'[test]'
+        run: pip install .'[dev]'
 
       - name: Run tests
         run: pytest -s -vvvv -l --tb=long tests
@@ -71,7 +71,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install project
-        run: pip install .'[test]'
+        run: pip install .'[dev]'
 
       - name: Run tests
         run: pytest -s -vvvv -l --tb=long tests
@@ -94,7 +94,7 @@ jobs:
         run: python -m pip install --user --upgrade pip
 
       - name: Install project
-        run: pip install .[test]
+        run: pip install .[dev]
 
       - name: run tests
         run: pytest -s -vvvv -l --tb=long tests

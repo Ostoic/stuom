@@ -1,4 +1,5 @@
 """Contains units of measurement for working with electricity units such as power."""
+
 from typing import TypeVar
 
 from stuom.uom import HasSiOrder

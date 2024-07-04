@@ -46,6 +46,7 @@ class TeraBytes(MemorySize):
     def order() -> int:
         return -12
 
+
 class PetaBytes(MemorySize):
     """1_000_000_000_000 bytes."""
 

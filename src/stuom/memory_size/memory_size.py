@@ -6,6 +6,7 @@ from stuom.uom import HasSiOrder
 
 MemorySizeT = TypeVar("MemorySizeT", bound="MemorySize")
 
+
 class MemorySize(HasSiOrder):
     """Represents a byte-based unit of measuring memory size.
 
@@ -18,7 +19,6 @@ class MemorySize(HasSiOrder):
 
     def convert_memmory_size(self, to_cls: type[MemorySizeT]) -> MemorySizeT:
         return self.convert_si(to_cls)
-
 
     @classmethod
     def from_memory_size(cls: type[MemorySizeT], other: "MemorySize") -> MemorySizeT:

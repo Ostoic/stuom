@@ -52,6 +52,7 @@ class TebiBytes(MemorySize):
     def order() -> float:
         return -math.log(2**40, 10)
 
+
 class PebiBytes(MemorySize):
     """2^50 bytes."""
 

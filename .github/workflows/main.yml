@@ -6,7 +6,8 @@ on:
 
   pull_request:
     types:
-      - ready_for_review
+      - ready_for_review # Run CI when PR is marked as ready for review.
+      - synchronize # Run CI when HEAD is updated (i.e., new commit was pushed).
     branches:
       - dev/*
       - main

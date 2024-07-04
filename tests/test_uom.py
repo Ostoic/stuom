@@ -1,4 +1,5 @@
 """Test unit of measurement types."""
+
 import math
 
 from stuom import (

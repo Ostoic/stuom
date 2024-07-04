@@ -1,4 +1,5 @@
 """Statically-typed units of measurement."""
+
 from . import duration, electricity, length, parse, uom
 from .duration import (
     Duration,

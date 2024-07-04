@@ -51,11 +51,6 @@ jobs:
       - name: Run tests
         run: pytest -s -vvvv -l --tb=long tests
 
-      - name: "Upload coverage to Codecov"
-        uses: codecov/codecov-action@v3
-        # with:
-        #   fail_ci_if_error: true
-
   tests_mac:
     needs: linter
     strategy:

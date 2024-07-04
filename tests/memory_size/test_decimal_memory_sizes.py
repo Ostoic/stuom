@@ -1,6 +1,6 @@
 """Test computer memory size units of measurement."""
 
-from stuom.memory_size import (
+from stuom import (
     Bytes,
     GigaBytes,
     KiloBytes,

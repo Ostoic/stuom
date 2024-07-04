@@ -25,7 +25,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install project
-        run: pip install .'[lint]'
+        run: pip install .'[dev]'
 
       - name: Run linter
         run: ruff src/stuom
@@ -46,7 +46,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install project
-        run: pip install .'[test]'
+        run: pip install .'[dev]'
 
       - name: Run tests
         run: pytest -s -vvvv -l --tb=long tests

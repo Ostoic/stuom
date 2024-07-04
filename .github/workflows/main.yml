@@ -28,7 +28,7 @@ jobs:
         run: pip install .'[dev]'
 
       - name: Run linter
-        run: ruff src/stuom
+        run: ruff check src/stuom
 
   tests_linux:
     needs: linter

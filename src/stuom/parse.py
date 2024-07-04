@@ -36,7 +36,7 @@ def find_minimal_si(d: Duration) -> Duration:
 
 
 def parse_minimal_si(d: Duration) -> str:
-    """Parse the minimal duration subclass.
+    """String format a duration into its minimum-order SI duration.
 
     Args:
         d (Duration): The duration to process.

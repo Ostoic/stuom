@@ -59,6 +59,7 @@ class HasSiOrder(float):
         return self_type(float.__floordiv__(self, value))
 
     if HAS_PYDANTIC_CORE:
+
         @classmethod
         def validate(cls, value, _):
             if not isinstance(value, float):
@@ -69,9 +70,9 @@ class HasSiOrder(float):
         @classmethod
         def __get_pydantic_json_schema__(
             cls,
-            schema: core_schema.CoreSchema, # type: ignore
-            handler: Callable[[Any], core_schema.CoreSchema], # type: ignore
-        ) -> core_schema.CoreSchema: # type: ignore
+            schema: core_schema.CoreSchema,  # type: ignore
+            handler: Callable[[Any], core_schema.CoreSchema],  # type: ignore
+        ) -> core_schema.CoreSchema:  # type: ignore
             return handler(core_schema.float_schema())
 
         @classmethod

@@ -14,8 +14,8 @@ def test_duration_fields_work_in_pydantic_models():
     """This ensures that one can construct pydantic `BaseModel`s with the `Duration` units of
     measurement.
     """
+
     class TestModel(BaseModel):
         duration: Seconds
 
     TestModel(duration=Seconds(2))
-

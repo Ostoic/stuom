@@ -1,7 +1,7 @@
 """Test computer memory size units of measurement."""
 
 import pytest
-from stuom.memory_size import (
+from stuom import (
     GigaBytes,
     KibiBytes,
     KiloBytes,

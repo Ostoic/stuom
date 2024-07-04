@@ -1,7 +1,7 @@
 """Test computer memory size units of measurement following the IEC binary convention."""
 
 import pytest
-from stuom.memory_size import (
+from stuom import (
     Bytes,
     GibiBytes,
     KibiBytes,

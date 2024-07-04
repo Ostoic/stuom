@@ -13,14 +13,15 @@ from stuom.duration import (
 
 
 def find_minimal_si(d: Duration) -> Duration:
-    """Parse the duration and use the `Duration` subclass that represents the duration in the
-    lowest number of digits.
+    """Find the given duration's minimum-order SI type that minimizes the number of digits needed
+    to represent the given value.
 
     Args:
         d (Duration): The duration to parse
 
     Returns:
-        str: The
+        Duration: A duration that minimizes the number of digits needed to represent the given
+        value.
     """
     duration_us = d.convert_duration(Microseconds)
     duration_ms = d.convert_duration(Milliseconds)
@@ -35,7 +36,7 @@ def find_minimal_si(d: Duration) -> Duration:
 
 
 def parse_minimal_si(d: Duration) -> str:
-    """Parse the minimal duration subclass.
+    """String format a duration into its minimum-order SI duration.
 
     Args:
         d (Duration): The duration to process.

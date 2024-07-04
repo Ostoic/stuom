@@ -3,6 +3,21 @@
 from abc import abstractmethod
 from typing import TypeAlias, TypeVar
 
+HAS_PYDANTIC_CORE = False
+"""Whether the environment is configured with the pydantic_core package installed."""
+
+# Attempt to import pydantic_core, and determine whether validation support is to be added or not.
+try:
+    from collections.abc import Callable
+    from typing import Any
+
+    from pydantic_core import core_schema
+
+    HAS_PYDANTIC_CORE = True
+except ImportError:
+    pass
+
+
 SiT = TypeVar("SiT", bound="HasSiOrder")
 IntT: TypeAlias = int | float
 
@@ -42,6 +57,26 @@ class HasSiOrder(float):
     def __floordiv__(self: SiT, value: IntT) -> SiT:
         self_type = type(self)
         return self_type(float.__floordiv__(self, value))
+
+    if HAS_PYDANTIC_CORE:
+        @classmethod
+        def validate(cls, value, _):
+            if not isinstance(value, float):
+                raise TypeError("Must be float")
+
+            return cls(value)
+
+        @classmethod
+        def __get_pydantic_json_schema__(
+            cls,
+            schema: core_schema.CoreSchema, # type: ignore
+            handler: Callable[[Any], core_schema.CoreSchema], # type: ignore
+        ) -> core_schema.CoreSchema: # type: ignore
+            return handler(core_schema.float_schema())
+
+        @classmethod
+        def __get_pydantic_core_schema__(cls, source, handler):
+            return core_schema.with_info_plain_validator_function(cls.validate)
 
 
 def _convert_si(from_value: HasSiOrder, to_cls: type[SiT]) -> SiT:

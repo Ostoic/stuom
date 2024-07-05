@@ -5,7 +5,12 @@ on:
     branches: [main]
 
   pull_request:
-    branches: [main]
+    types:
+      - ready_for_review # Run CI when PR is marked as ready for review.
+      - synchronize # Run CI when HEAD is updated (i.e., new commit was pushed).
+    branches:
+      - dev/*
+      - main
 
   workflow_dispatch:
 
@@ -30,12 +35,17 @@ jobs:
       - name: Run linter
         run: ruff check src/stuom
 
-  tests_linux:
+  tests_bash_shell:
     needs: linter
     strategy:
       fail-fast: false
       matrix:
         python-version: ["3.10"]
+        pydantic-version-install:
+          - "pip install pydantic~=2.6.0"
+          - "pip install pydantic~=2.7.0"
+          - "pip install pydantic~=2.8.0"
+          - "echo 'No pydantic install'"
         os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
@@ -48,30 +58,8 @@ jobs:
       - name: Install project
         run: pip install .'[dev]'
 
-      - name: Run tests
-        run: pytest -s -vvvv -l --tb=long tests
-
-      - name: "Upload coverage to Codecov"
-        uses: codecov/codecov-action@v3
-        # with:
-        #   fail_ci_if_error: true
-
-  tests_mac:
-    needs: linter
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ["3.10"]
-        os: [macos-latest]
-
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install project
-        run: pip install .'[dev]'
+      - name: Install specific version of pydantic
+        run: ${{ matrix.pydantic-version-install }}
 
       - name: Run tests
         run: pytest -s -vvvv -l --tb=long tests

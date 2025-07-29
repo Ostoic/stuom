@@ -1,7 +1,6 @@
 """Test that we can create basic pydantic models using units of measurement."""
 
 import pytest
-from pydantic import BaseModel
 from stuom.duration import Seconds
 from stuom.electricity import Kilovolts
 

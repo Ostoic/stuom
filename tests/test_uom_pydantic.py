@@ -1,7 +1,9 @@
 """Test that we can create basic pydantic models using units of measurement."""
 
 import pytest
+from pydantic import BaseModel
 from stuom.duration import Seconds
+from stuom.electricity import Kilovolts
 
 try:
     from pydantic import BaseModel  # type: ignore
@@ -18,4 +20,19 @@ def test_duration_fields_work_in_pydantic_models():
     class TestModel(BaseModel):
         duration: Seconds
 
-    TestModel(duration=Seconds(2))
+    _ = TestModel(duration=Seconds(2))
+
+
+def test_uom_floatlike_validates():
+    class PydanticModel(BaseModel):
+        voltage: Kilovolts
+
+    model = PydanticModel.model_validate({"voltage": 10})
+    assert model.voltage == 10
+
+def test_uom_non_floatlike_fails_to_validate():
+    class PydanticModel(BaseModel):
+        voltage: Kilovolts
+
+    with pytest.raises(TypeError):
+        _ = PydanticModel.model_validate({"voltage": PydanticModel})

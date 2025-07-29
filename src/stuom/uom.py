@@ -1,7 +1,7 @@
 """Simple statically-typed unit of measurements with order conversions."""
 
 from abc import abstractmethod
-from typing import TypeAlias, TypeVar
+from typing import SupportsFloat, TypeAlias, TypeVar
 
 HAS_PYDANTIC_CORE = False
 """Whether the environment is configured with the pydantic_core package installed."""
@@ -61,11 +61,11 @@ class HasSiOrder(float):
     if HAS_PYDANTIC_CORE:
 
         @classmethod
-        def validate(cls, value, _):
-            if not isinstance(value, float):
-                raise TypeError("Must be float")
+        def validate(cls, value: object, _):
+            if not isinstance(value, SupportsFloat):
+                raise TypeError(f"Unsupported standard unit number type: {type(value)}")
 
-            return cls(value)
+            return cls(float(value))
 
         @classmethod
         def __get_pydantic_json_schema__(
